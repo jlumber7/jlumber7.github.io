@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Lumber - JSON Parser</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(34, 34, 34, 1);
+      color: white;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+    }
+
+    .upload-area {
+      border: 2px dashed #00c853;
+      border-radius: 5px;
+      padding: 30px;
+      text-align: center;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .upload-area.dragover {
+      border-color: #00c853;
+      background-color: rgba(0, 200, 83, 0.1);
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+      color: white;
+    }
+
+    .file-info {
+      margin-top: 10px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      color: #00c853;
+    }
+
+    .process-button {
+      display: block;
+      width: 100%;
+      padding: 12px 20px;
+      margin-top: 20px;
+      background-color: #00c853;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .process-button:hover {
+      background-color: #009624;
+    }
+
+    .process-button:disabled {
+      background-color: #333;
+      cursor: not-allowed;
+    }
+
+    .output-box {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid #00c853;
+      border-radius: 5px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: monospace;
+      white-space: pre-wrap;
+      color: #00c853;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards 0.5s;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: white;
+      text-decoration: none;
+      border: 1px solid #00c853;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #00c853;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-button">← Back to Home Page</a>
+    <h2>JSON Parser</h2>
+    <div class="upload-area" id="dropZone">
+      <p>Drag and drop your file here</p>
+      <p>or</p>
+      <form id="fileForm">
+        <input type="file" id="fileInput" />
+      </form>
+    </div>
+    <div class="file-info" id="fileName"></div>
+    <button class="process-button" id="processButton" disabled>Process File</button>
+    <div class="output-box" id="outputBox"></div>
+  </div>
+
+  <script>
+    // Smooth fade-in effect on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.opacity = "1";
+    });
+
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+    const dropZone = document.getElementById('dropZone');
+    const processButton = document.getElementById('processButton');
+
+    // Handle file input change
+    fileInput.addEventListener('change', handleFileSelect);
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop zone when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    function highlight(e) {
+      dropZone.classList.add('dragover');
+    }
+
+    function unhighlight(e) {
+      dropZone.classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      handleFiles(files);
+    }
+
+    function handleFileSelect(e) {
+      const files = e.target.files;
+      handleFiles(files);
+    }
+
+    function handleFiles(files) {
+      if (files.length > 0) {
+        const file = files[0];
+        fileNameDisplay.textContent = `Selected file: ${file.name}`;
+        processButton.disabled = false;
+      } else {
+        fileNameDisplay.textContent = '';
+        processButton.disabled = true;
+      }
+    }
+  </script>
+  <script src="jsonParser/uuid.js"></script>
+  <script src="jsonParser/tictactoeParser.js"></script>
+</body>
+</html>
