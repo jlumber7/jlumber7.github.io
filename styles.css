@@ -1,0 +1,271 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(34, 34, 34, 1);
+            color: white;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        header {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(34, 34, 34, 1)), 
+                        url('images/header.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+        }
+
+        .cta {
+            display:flow-root;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #00c853;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 1s;
+        }
+
+        #carousel #portfolio, #about, #contact {
+            padding: 50px 0;
+            background: #222;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 1.5s;
+        }
+
+        #about {
+            margin-top: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Item Hover Effect */
+        .item {
+            position: relative;
+            overflow: hidden;
+            background: #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+
+        .item:hover img {
+            transform: scale(1.1);
+            filter: brightness(50%); /* Darkens the image */
+        }
+
+        .item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6); /* Dark background */
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .item:hover .overlay {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: #00c853;
+            text-decoration: none;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #00c853;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #00c853;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: normal;
+            width: max-content;
+            max-width: 300px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #00c853 transparent transparent transparent;
+        }
+
+        .circle-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .dot-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00c853;
+            border-radius: 50%;
+        }
+
+        .dot.outline {
+            background-color: transparent;
+            border: 2px solid #00c853;
+            width: 8px;
+            height: 8px;
+        }
+
+        .dot-text {
+            color: white;
+            font-size: 1rem;
+        }

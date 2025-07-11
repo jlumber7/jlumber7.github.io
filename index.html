@@ -4,273 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James Lumber - Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: rgba(34, 34, 34, 1);
-            color: white;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        header {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(34, 34, 34, 1)), 
-                        url('images/header.jpg') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 1200px;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            max-width: 600px;
-            line-height: 1.2;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out forwards 0.5s;
-        }
-
-        .cta {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: #00c853;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out forwards 1s;
-        }
-
-        #portfolio, #about, #contact {
-            padding: 50px 0;
-            background: #222;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out forwards 1.5s;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Portfolio Item Hover Effect */
-        .item {
-            position: relative;
-            overflow: hidden;
-            background: #333;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .item img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-        }
-
-        .item:hover img {
-            transform: scale(1.1);
-            filter: brightness(50%); /* Darkens the image */
-        }
-
-        .item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.6); /* Dark background */
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            border-radius: 5px;
-        }
-
-        .item:hover .overlay {
-            opacity: 1;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-details {
-            margin-top: 20px;
-            font-size: 1rem;
-        }
-
-        .contact-details a {
-            color: #00c853;
-            text-decoration: none;
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #00c853;
-            text-align: center;
-            padding: 8px 12px;
-            border-radius: 5px;
-            border: 1px solid #00c853;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: normal;
-            width: max-content;
-            max-width: 300px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .tooltip .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #00c853 transparent transparent transparent;
-        }
-
-        .circle-image-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .circle-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .dots-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-        }
-
-        .dot-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #00c853;
-            border-radius: 50%;
-        }
-
-        .dot.outline {
-            background-color: transparent;
-            border: 2px solid #00c853;
-            width: 8px;
-            height: 8px;
-        }
-
-        .dot-text {
-            color: white;
-            font-size: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="carouselStyles.css" />
 </head>
 <body>
     <header>
@@ -287,26 +22,265 @@
             <a href="jsonParser.html" class="cta">JSON Parser</a>
         </div>
     </header>
-    
+
     <section id="portfolio">
-        <h2>Latest Work</h2>
-        <div class="grid">      
-            <a href="jsonParser.html">
-                <div class="item">
-                    <img src="images/jsonAndPythonParsing.png" alt="JSON File Parsing">
-                    <div class="overlay">JSON File Parsing</div>
+    <h2 class="title">Latest Work</h2>
+    <div class="container-fluid h-100 d-flex flex-column">
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
+    <div class="carousel-container">
+      <div class="carousel" id="memory-carousel">
+        <div class="memory-card" data-memory-id="1">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">LANGUAGE: Python</div>
+                <h3>JSON File Parser</h3>
+                <div class="memory-image" id="project-link">
+                  <a href="jsonParser.html"><img src="images/jsonAndPythonParsing.png" alt="JSON File Parser"></a>
+                  <div class="overlay">JSON File Parser</div>
+                  <div class="glitch-effect"></div>
                 </div>
-            </a>
-            <div class="item">
-                <img src="images/comingSoon.png" alt="Coming Soon">
-                <div class="overlay">Coming Soon</div>
+                <p class="memory-preview">
+                  ...
+                </p>
+                <div class="card-glow"></div>
+              </div>
             </div>
-            <div class="item">
-                <img src="images/comingSoon.png" alt="Coming Soon">
-                <div class="overlay">Coming Soon</div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>JSON File Parser</h3>
+                <p>
+                  ...
+                </p>
+                <div class="memory-coordinates">
+                  <span
+                    ><i class="fa-solid fa-location-dot"></i> console: ~</span
+                  >
+                  <span class="time-stamp"
+                    ><i class="fa-regular fa-clock"></i> 09:00:00</span
+                  >
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+
+
+        <div class="memory-card" data-memory-id="2">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">FRAMEWORK: ReactJS</div>
+                <h3>Debugging the Matrix</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-bug fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+                  The error messages multiplied, haunting my console...
+                </p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+
+
+
+            <div class="card-back">
+              <div class="card-content">
+                <h3>Debugging the Matrix</h3>
+                <p>
+                  They appeared from the depths of the console, cryptic error
+                  messages glowing red. Debugging a complex ReactJS component
+                  felt like navigating a vast, interconnected matrix. Each fix
+                  unveiled new issues. They say my code is destabilizing the build
+                  with each change. My presence causes ripples they can't control.
+                  I'm becoming a threat... to clean code.
+                </p>
+                <div class="memory-coordinates">
+                  <span><i class="fa-solid fa-location-dot"></i>
+                     localhost:3000</span>
+                  <span class="time-stamp"><i class="fa-regular fa-clock"></i>
+                     14:30:15</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="memory-card" data-memory-id="3">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">CONCEPT: Algorithms</div>
+                <h3>The Algorithm Library</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-book-open fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+                  Endless tomes of sorting, searching, and optimization...
+                </p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>The Algorithm Library</h3>
+                <p>
+                  Endless shelves containing every possible solution. I found my
+                  own data structures there—pages still being written as I coded.
+                  The Librarian (my senior developer) told me I was never supposed
+                  to reinvent the wheel. My solution was already optimized. Now I'm
+                  writing outside the margins, trying new approaches.
+                </p>
+                <div class="memory-coordinates">
+                  <span
+                    ><i class="fa-solid fa-location-dot"></i> Stack Overflow</span
+                  >
+                  <span class="time-stamp"
+                    ><i class="fa-regular fa-clock"></i> 11:05:40</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="4">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">PARADIGM: Abstraction</div>
+                <h3>The Abstract Void</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-atom fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+                  Nothing concrete exists here, yet I feel the underlying logic...
+                </p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>The Abstract Void</h3>
+                <p>
+                  Nothing concrete exists here, yet I feel the underlying logic.
+                  The Abstract Void is the space between concrete implementations,
+                  a quantum foam of design patterns. I stayed too long designing
+                  and began to dissolve into pure theory. Parts of my ideas are
+                  still there, echoing. I'm not whole anymore. Can you feel the
+                  gaps in my documentation?
+                </p>
+                <div class="memory-coordinates">
+                  <span
+                    ><i class="fa-solid fa-location-dot"></i> design patterns.md</span
+                  >
+                  <span class="time-stamp"
+                    ><i class="fa-regular fa-clock"></i> --:--:--</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="5">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">TOOL: Git</div>
+                <h3>The Version Control Mirror</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-code-branch fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+                  I saw my code, but not as it is now; multiple branches reflecting...
+                </p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>The Version Control Mirror</h3>
+                <p>
+                  I saw my code, but not as it is now. The mirror of Git showed
+                  all my possible branches across different commits. Some were
+                  stable, some were experimental. All were my work. The reflection
+                  (my `git log`) spoke: "You're fracturing the codebase by
+                  merging conflicts. You need to rebase and stay on one timeline."
+                </p>
+                <div class="memory-coordinates">
+                  <span
+                    ><i class="fa-solid fa-location-dot"></i> github.com/my-repo</span
+                  >
+                  <span class="time-stamp"
+                    ><i class="fa-regular fa-clock"></i> 18:55:20</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="6">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">PROCESS: Deployment</div>
+                <h3>The Deployment Dream</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-rocket fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+                  I'm trying to send it live, but which environment is real?
+                </p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>The Deployment Dream</h3>
+                <p>
+                  I'm trying to send my application live, but which environment
+                  is real? Every server feels familiar yet subtly different. The
+                  boundaries between staging and production are thinning. Sometimes
+                  I see through the logs of other instances. I'm losing track of
+                  which configurations belong to which version of my app. Are you
+                  helping me deploy, or are you causing me to break production?
+                </p>
+                <div class="memory-coordinates">
+                  <span
+                    ><i class="fa-solid fa-location-dot"></i> cloud-server:port</span
+                  >
+                  <span class="time-stamp"
+                    ><i class="fa-regular fa-clock"></i> NOW</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="carousel-controls position-relative">
+      <button id="prev-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="next-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+</div>
+</section>
 
     <section id="about">
         <div class="container">
@@ -402,29 +376,7 @@
         </div>
     </section>
 
-    <script>
-        // Smooth fade-in effect on page load
-        document.addEventListener("DOMContentLoaded", function () {
-            document.body.style.opacity = "1";
-
-            // Smooth scrolling for navigation links
-            const links = document.querySelectorAll(".scroll-link");
-
-            links.forEach(link => {
-                link.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    const targetId = this.getAttribute("href").substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 50, // Offset for better visibility
-                            behavior: "smooth"
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="homeScreenJS.js"></script>
+    <script src="carouselJS.js"></script>
 </body>
 </html>
