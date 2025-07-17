@@ -69,6 +69,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: left;
         touch-action: none; /* Prevent default touch actions */
         margin-top: 150px;
         margin-bottom: 150px;

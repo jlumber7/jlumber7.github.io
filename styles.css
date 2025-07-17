@@ -30,6 +30,8 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #ffffff;
         }
 
         nav .logo {
@@ -62,23 +64,27 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 1s ease-out forwards 0.5s;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #ffffff;
         }
 
         .cta {
             display:flow-root;
             margin-top: 20px;
             padding: 12px 24px;
-            background: #00c853;
-            color: white;
             text-decoration: none;
-            border-radius: 5px;
             font-size: 1.2rem;
-            opacity: 0;
+            opacity: 0.8;
             transform: translateY(20px);
             animation: fadeInUp 1s ease-out forwards 1s;
+            background-color: rgba(20, 20, 40, 0.7);
+            border: 1px solid rgba(157, 0, 255, 0.3);
+            font-family: "Orbitron", sans-serif;
+            color: #ff00e5;
+            text-shadow: 0 0 5px rgba(255, 0, 229, 0.7);
         }
 
-        #carousel #portfolio, #about, #contact {
+        #portfolio, #about, #contact {
             padding: 50px 0;
             background: #222;
             text-align: center;
