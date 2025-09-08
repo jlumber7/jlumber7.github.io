@@ -293,7 +293,6 @@
             font-size: 1rem;
         }
 
-
         .row {
         display: flex;
         gap: var(16px);
@@ -316,6 +315,14 @@
         }
         .box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
 
+        .box-text{
+            padding: 5%;
+        }
+
+        .glow{
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+        }
 
         /* Make it responsive: if the screen is too narrow, allow wrapping */
         @media (max-width: 560px) {
