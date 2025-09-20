@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amenity Finder</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="amenityFinder/mapsApiStyles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Controls -->
+    <div class="controls">
+      <a href="index.html"><button title="Go Back to Home Screen">Go Back</button></a>
+      <input type="text" id="search" title="Enter the location that you want to search for here" placeholder="Search location..." />
+      <button title="Click here to execute your search" onclick="searchLocation()">Search</button>
+      <select title="Choose the type of amenities that you want to search for" id="filter">
+        <option value="hospital">Hospitals</option>
+        <option value="church">Churches</option>
+        <option value="restaurant">Restaurants</option>
+        <option value="park">Parks</option>
+        <option value="shop">Shops</option>
+        <option value="pub">Pubs</option>
+      </select>
+      <input title="Select the distance around the location that you would like to search" id="distanceFromLoc" type="range" min="1000", max="10000", step="500" value="1000"/>
+      <div title="Distance around the location to search" class="value" id="distValue">1000</div>
+      <button title="Search for your chosen amenities" onclick="applyFilter()">Apply</button>
+      <button title="Locate yourself on the map" onclick="locateMe()">Locate Me</button>
+    </div>
+
+    <!-- Map -->
+    <div class="map">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="amenityFinder/mapsApiMain.js"></script>
+</body>
+</html>

@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Elements
         const carousel = document.getElementById("memory-carousel");
         const cards = document.querySelectorAll(".memory-card");
-        const projects = document.getElementById("project-link");
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
+        const project1 = document.getElementById("project-1");
+        const project2 = document.getElementById("project-2");
 
         // Variables
         let currentIndex = 0;
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add event listeners
           prevBtn.addEventListener("click", prevCard);
           nextBtn.addEventListener("click", nextCard);
+          project1.addEventListener("click", () => followProjectLink(project1));
+          project2.addEventListener("click", () => followProjectLink(project2));
           cards.forEach((card) => {
             card.addEventListener("click", flipCard);
           });
@@ -121,13 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
             e.pageX || (e.changedTouches ? e.changedTouches[0].pageX : startX);
           const diffX = currentX - startX;
 
-          // FIXED DIRECTION: If swiping right, show previous card (theta increases)
-          // If swiping left, show next card (theta decreases)
+          //If swiping right, show previous card (theta increases)
+          //If swiping left, show next card (theta decreases)
           if (Math.abs(diffX) > 20) {
             if (diffX > 0) {
-              prevCard(); // Swipe right to see previous card
+              prevCard(); //Swipe right to see previous card
             } else {
-              nextCard(); // Swipe left to see next card
+              nextCard(); //Swipe left to see next card
             }
           } else {
             // Snap to the closest card
@@ -154,11 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        projects.addEventListener("click", followProjectLink);
-
-        function followProjectLink() 
+        //Sends the user to the project associated with the link
+        function followProjectLink(project)
         {
-          const projectLinkContainer = document.getElementById('project-link');
+          const projectLinkContainer = project;
           if (!projectLinkContainer) return;
           const link = projectLinkContainer.querySelector('a');
           if (link && link.href) {

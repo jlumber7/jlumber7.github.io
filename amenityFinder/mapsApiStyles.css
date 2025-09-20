@@ -1,0 +1,67 @@
+body, html {
+      margin: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    .controls input, 
+    .controls select, 
+    .controls button {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .controls button {
+      cursor: pointer;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      transition: background 0.2s
+    }
+
+    .controls button:hover {
+      background: #0056b3;
+    }
+
+    .value {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .map {
+      flex: 1;
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    .map-placeholder {
+      position: absolute;
+      inset: 0;
+      background: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 18px;
+    }
