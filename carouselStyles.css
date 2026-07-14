@@ -53,8 +53,8 @@
         background: linear-gradient(90deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         background-clip: text;
-        text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
-        color: #ff00e5;
+        color: transparent;
+        text-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
         text-align: center;
         animation: pulse 3s infinite alternate;
       }
