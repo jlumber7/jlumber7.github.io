@@ -319,6 +319,15 @@
             padding: 5%;
         }
 
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wide {
+            flex-basis: 100%;
+        }
+
         .glow{
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             color: #ffffff;
