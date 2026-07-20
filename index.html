@@ -1,461 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Lumber - Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="carouselStyles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="iridescence-bg"></div>
-  
-    <header>
-        <nav>
-            <div class="logo">James Lumber</div>
-            <ul>
-                <li><a href="#portfolio" class="scroll-link">Portfolio</a></li>
-                <li><a href="#about" class="scroll-link">About</a></li>
-                <li><a href="#contact" class="scroll-link">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <h1>Check Out My Most Recent Project!</h1>
-            <a href="jsonParser.html" class="cta">JSON Parser</a>
+
+<div id="skyLayer"></div>
+<div id="sun"></div>
+<div id="cloudLayer"></div>
+<svg id="grain" width="100%" height="100%">
+  <filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+</svg>
+
+<div id="plantWrap">
+  <svg id="plantSvg" viewBox="0 0 1000 8000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="flowerCenter" cx="40%" cy="35%" r="70%">
+        <stop offset="0%" stop-color="#8A5A32"/>
+        <stop offset="60%" stop-color="#6B4226"/>
+        <stop offset="100%" stop-color="#4A2C16"/>
+      </radialGradient>
+      <linearGradient id="petalGrad" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#E8862E"/>
+        <stop offset="55%" stop-color="#F2A93B"/>
+        <stop offset="100%" stop-color="#FCDA8C"/>
+      </linearGradient>
+      <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#3F5726"/>
+        <stop offset="100%" stop-color="#7FA05A"/>
+      </linearGradient>
+      <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6E8C4E"/>
+        <stop offset="100%" stop-color="#3F5726"/>
+      </linearGradient>
+      <linearGradient id="rootGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#EDEAE1"/>
+        <stop offset="100%" stop-color="#9A968B"/>
+      </linearGradient>
+      <linearGradient id="hillGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6B4226" stop-opacity="0.92"/>
+        <stop offset="18%" stop-color="#4A2C16" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#241408" stop-opacity="1"/>
+      </linearGradient>
+      <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="9"/>
+      </filter>
+    </defs>
+
+    <!-- stem, drawn behind everything -->
+    <path id="stemPath" fill="none" stroke="url(#stemGrad)" stroke-width="14" stroke-linecap="round"/>
+
+    <!-- roots, near bottom of document -->
+    <g id="rootsGroup" stroke="url(#rootGrad)" fill="none" stroke-linecap="round"></g>
+
+    <!-- grass + hill boundary marking the surface where stem meets roots -->
+    <g id="groundGroup"></g>
+
+    <!-- flower head -->
+    <g id="flowerGroup"></g>
+
+    <!-- leaves get injected here by JS -->
+    <g id="leavesGroup"></g>
+  </svg>
+</div>
+
+<!-- roots are drawn in this absolutely-positioned layer so they SCROLL WITH THE
+     PAGE (document coordinates) instead of being recomputed every frame in screen
+     space. #rootStruct holds the static roots (stem→about, about↔spotify + the
+     convergence dot); #rootCards holds the carousel roots, redrawn only when the
+     carousel rotates. It sits above the soil (plant, z-index 3) but behind the
+     cards (content, z-index 4). -->
+<svg id="rootLayer"><g id="rootStruct"></g><g id="rootCards"></g></svg>
+
+<div class="content">
+
+  <section class="hero">
+    <span class="eyebrow">Portfolio</span>
+    <h1>James Lumber</h1>
+    <p class="role">Software Engineer</p>
+    <span class="scroll-cue">Scroll to grow ↓</span>
+  </section>
+
+  <!-- ============ project sections (one per leaf) ============ -->
+  <section class="project-section left" data-index="0">
+    <div class="holo-anchor" data-index="0">
+      <div class="holo">
+      <span class="index">01</span>
+      <h3>Riverstone — Mobile Banking</h3>
+      <p>Redesigned a banking app's core flows, cutting time-to-transfer by 40% for 200k monthly users.</p>
+      <div class="tags"><span>Product Design</span><span>iOS</span><span>Research</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="project-section right" data-index="1">
+    <div class="holo-anchor" data-index="1">
+      <div class="holo">
+      <span class="index">02</span>
+      <h3>Aria — Writing Assistant</h3>
+      <p>An AI writing tool with inline suggestions and tone control, built end-to-end from prototype to launch.</p>
+      <div class="tags"><span>React</span><span>LLM UX</span><span>Design System</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="project-section left" data-index="2">
+    <div class="holo-anchor" data-index="2">
+      <div class="holo">
+      <span class="index">03</span>
+      <h3>GreenPath — Sustainability Dashboard</h3>
+      <p>A data dashboard helping facilities teams track emissions goals, translating raw sensor feeds into clear action.</p>
+      <div class="tags"><span>Data Viz</span><span>D3</span><span>B2B</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="project-section right" data-index="3">
+    <div class="holo-anchor" data-index="3">
+      <div class="holo">
+      <span class="index">04</span>
+      <h3>Lumen Studio — Brand Identity</h3>
+      <p>Full visual identity for an independent photography studio, from wordmark to a print-first site.</p>
+      <div class="tags"><span>Branding</span><span>Type</span><span>Print</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="project-section left" data-index="4">
+    <div class="holo-anchor" data-index="4">
+      <div class="holo">
+      <span class="index">05</span>
+      <h3>Wanderlist — Travel Planner</h3>
+      <p>A collaborative trip planner that turns scattered links and notes into a single shared itinerary.</p>
+      <div class="tags"><span>Mobile</span><span>Collaboration</span><span>Maps</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="project-section right" data-index="5">
+    <div class="holo-anchor" data-index="5">
+      <div class="holo">
+      <span class="index">06</span>
+      <h3>Nova — Analytics Platform</h3>
+      <p>Self-serve analytics for small teams, replacing a spreadsheet workflow with live, explorable charts.</p>
+      <div class="tags"><span>Full Stack</span><span>Charts</span><span>Onboarding</span></div>
+      <a href="#">View case study →</a>
+    </div>
+    </div>
+  </section>
+
+  <section class="roots-section">
+    <div class="stories-heading" id="storiesAnchor">
+      <span class="eyebrow">Where the roots keep growing</span>
+      <h2>Learning Log</h2>
+    </div>
+
+    <div class="stories-carousel" id="storiesCarousel">
+      <div class="carousel-viewport" id="storyTrack">
+        <article class="story-card" data-index="0">
+          <span class="index">Coursera · HKUST</span>
+          <h3>Python &amp; Statistics for Financial Analysis</h3>
+          <div class="meta">Course</div>
+          <p>Worked with historical economic data using Pandas and Matplotlib, and learned to fit
+            prediction models across multiple variables — along with the mathematical foundations
+            behind them.</p>
+        </article>
+        <article class="story-card" data-index="1">
+          <span class="index">Henry Brothers Ltd</span>
+          <h3>Data Analyst Summer Placement</h3>
+          <div class="meta">Internship</div>
+          <p>Reduced data redundancy across the company's database ahead of a full system migration,
+            then analysed the cleaned data to produce cost-saving reports presented directly to the
+            finance director.</p>
+        </article>
+        <article class="story-card" data-index="2">
+          <span class="index">QUB Datathon 24/25</span>
+          <h3>NI Census Data Analysis</h3>
+          <div class="meta">Competition</div>
+          <p>Used Alteryx to analyse Northern Ireland census data and proposed a government-subsidised
+            solar panel scheme for economically deprived areas — reaching the second round of judging.</p>
+        </article>
+        <article class="story-card coming-soon" data-index="3">
+          <span class="index">Coming Soon</span>
+          <h3>Quantum Computing &amp; Cryptography</h3>
+          <div class="meta">In Progress</div>
+          <p>Working through Quantum Physics and Quantum Mechanics courses with the University of Maryland
+            and University of Colorado Boulder, ahead of a quantum hashing project.</p>
+        </article>
+        <article class="story-card coming-soon" data-index="4">
+          <span class="index">Coming Soon</span>
+          <h3>Sorting &amp; Searching Algorithms</h3>
+          <div class="meta">In Progress</div>
+          <p>Building out a small library of classic sorting and searching algorithms, with notes on
+            time and space complexity for each.</p>
+        </article>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" id="storyPrev" aria-label="Previous story">‹</button>
+        <div class="carousel-dots" id="storyDots">
+          <button class="active" data-index="0" aria-label="Story 1"></button>
+          <button data-index="1" aria-label="Story 2"></button>
+          <button data-index="2" aria-label="Story 3"></button>
+          <button data-index="3" aria-label="Story 4"></button>
+          <button data-index="4" aria-label="Story 5"></button>
         </div>
-    </header>
-
-    <section id="portfolio">
-    <h2>Latest Work</h2>
-    <div class="container-fluid h-100 d-flex flex-column">
-  <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
-    <div class="carousel-container">
-      <div class="carousel" id="memory-carousel">
-        
-        <div class="memory-card" data-memory-id="1">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">CONCEPT: Algorithmic Data Matching</div>
-                <h3>JSON File Parser</h3>
-                <div class="memory-image" id="project-1">
-                  <a href="jsonParser.html"><img src="images/jsonAndPythonParsing.png" alt="JSON File Parser"></a>
-                  <div class="overlay">JSON File Parser</div>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="card-content">
-                <h3>JSON File Parser</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> console: ~</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> 09:00:00</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="2">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">Concept: Working with APIs</div>
-                <h3>Amenity Finder via OSM API</h3>
-                <div class="memory-image" id="project-2">
-                  <a href="mapsApiUI.html"><img src="images/amenityFinder.jpg" alt="Amenity Finder"></a>
-                  <div class="overlay">Amenity Finder</div>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>Amenity Finder via OSM API</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> github.com/my-repo</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> 18:55:20</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="3">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">CONCEPT: Quantum Cyber-Security</div>
-                <h3>Quantum Hashing Algorithm</h3>
-                <div class="memory-image">
-                  <i class="fa-solid fa-bug fa-3x"></i>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>Quantum Hashing Algorithm</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span><i class="fa-solid fa-location-dot"></i>
-                     localhost:3000</span>
-                  <span class="time-stamp"><i class="fa-regular fa-clock"></i>
-                     14:30:15</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="4">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">CONCEPT: Searching Algorithms</div>
-                <h3>Searching Algorithm Library</h3>
-                <div class="memory-image">
-                  <i class="fa-solid fa-book-open fa-3x"></i>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>Searching Algorithm Library</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> Stack Overflow</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> 11:05:40</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="5">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">Concept: Sorting Algorithms</div>
-                <h3>Sorting Algorithm Library</h3>
-                <div class="memory-image">
-                  <i class="fa-solid fa-atom fa-3x"></i>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>Sorting Algorithm Library</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> design patterns.md</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> --:--:--</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="6">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">Concept: Full Stack Development</div>
-                <h3>A-Level SSD Project</h3>
-                <div class="memory-image">
-                  <i class="fa-solid fa-code-branch fa-3x"></i>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>A-Level SSD Project</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> github.com/my-repo</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> 18:55:20</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="memory-card" data-memory-id="7">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="card-content">
-                <div class="memory-date">Concept: Analysing Historical Stock Data</div>
-                <h3>Historical Stock Data Analysis</h3>
-                <div class="memory-image">
-                  <i class="fa-solid fa-rocket fa-3x"></i>
-                  <div class="glitch-effect"></div>
-                </div>
-                <p class="memory-preview">
-                  ...
-                </p>
-                <div class="card-glow"></div>
-              </div>
-            </div>
-
-            <div class="card-back">
-              <div class="card-content">
-                <h3>Historical Stock Data Analysis</h3>
-                <p>
-                  ...
-                </p>
-                <div class="memory-coordinates">
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> cloud-server:port</span
-                  >
-                  <span class="time-stamp"
-                    ><i class="fa-regular fa-clock"></i> NOW</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button class="carousel-btn next" id="storyNext" aria-label="Next story">›</button>
       </div>
     </div>
 
-  </main>
-</div>
-
-<div class="carousel-controls position-relative">
-      <button id="prev-btn" class="control-btn">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button id="next-btn" class="control-btn">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-</div>
-</section>
-
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="circle-image-container">
-                <img src="images/myProfilePicture.jpg" alt="Me presenting at a Datathon">
-            </div>
-            
-            <div class="dots-container">
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <span class="dot-text">C#</span>
-                </div>
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot outline"></div>
-                    </div>
-                    <span class="dot-text">HTML</span>
-                </div>
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot outline"></div>
-                    </div>
-                    <span class="dot-text">JS</span>
-                </div>
-            </div>
-
-            <div class="dots-container">
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot outline"></div>
-                    </div>
-                    <span class="dot-text">Python</span>
-                </div>
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot outline"></div>
-                    </div>
-                    <span class="dot-text">C</span>
-                </div>
-                <div class="dot-group">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot outline"></div>
-                        <div class="dot outline"></div>
-                    </div>
-                    <span class="dot-text">Java</span>
-                </div>
-            </div>
-
-            <p>
-                Hey, my name is <strong>James Lumber.</strong> I am a first year student at Queen's University, Belfast. I am currently studying for a <strong>Masters in Software Engineering.</strong>
-                This website is a showcase of extra-curricular projects that I have created, to improve my skills in various areas of computer science, alongside my studies.
-            </p>
-            <p>
-                So about me, for my hobbies and interests, I enjoy playing football, basketball, and computer games in my free time. The latter is what really lit the spark for my great interest in the field of Computer Science as a whole.
-                Within this field, I am interested in a wide variety of computer related topics. However, the main three topics that pique my interest are <strong>Cryptography, Financial Technology, and Artificial Intelligence.</strong>
-            </p>
-            <p>
-                In terms of my prior education, I undertook my A-Levels and GCSEs at St Mary's Grammar School Magherafelt. I achieved <strong><span class="tooltip">7A*<span class="tooltip-text">Business Studies, Digital Technology (Programming), Double Award Science, English Language, Further Mathematics, and Geography</span></span> and <span class="tooltip">3A's<span class="tooltip-text">English Literature, Irish Language, and Mathematics</span></span> in my GCSEs,</strong> and <strong><span class="tooltip">1A*<span class="tooltip-text">Mathematics</span></span> and <span class="tooltip">3A's<span class="tooltip-text">Economics, Physics, and Software Systems Development</span></span> in my A-Levels.</strong>
-                Additionally, I was <strong>top in my school for Further Mathematics at GCSE, and Mathematics at AS Level.</strong>
-            </p>
-            <p>
-                Concerning experience, in the working world, I have 3 years of retail experience. More importantly than that though, I had a <strong>3-month internship in the IT department of one of Northern Ireland's largest construction companies, Henry Brothers LTD.</strong>
-                During this placement period, I had the privileged opportunity to see behind the scenes of the day to day running of the business' IT department, as well as aid them in various tasks to get hands-on experience.
-            </p>
-            <p>
-                That is all from me for now, feel free to read about my latests activites or contact me below to find out more!
-            </p>
-        </div>
-    </section>
-
-    <section id="recently">
-        <div class="container">
-          <div class="row">
-
-            <div class="box">
-              <div class="box-text">
-                <div class="glow"><p style="font-size: 1.1rem;"><strong>Python and Statistics for Financial Analysis Course</strong></p></div><br>
-
-                <p>Completed with The Hong Kong University of Science and Technology through Coursera.
-                Gained experience working with historical economic data using Pandas and Matplotlib amongst other libraries. 
-                Learned how to fit economic prediction models using multiple variables in python and about the mathematical foundations of these models.</p>
-              </div>
-            </div>
-
-            <div class="box">
-              <div class="box-text">
-                <div class="glow"><p style="font-size: 1.1rem;"><strong>Data Analyst Summer Placement</strong></p></div><br>
-
-                <p>Summer Placement with Henry Brothers where I spent my time reducing data redundancy in their database system in preparation for the company-wide migration to a new system.
-                Then had to analyse the data and produce reports on where the company could save money and present these to the company's finance director.</p>
-              </div>
-            </div>
-
-            <div class="box">
-              <div class="box-text">
-                <div class="glow"><p style="font-size: 1.1rem;"><strong>QUB Datathon 24/25</strong></p></div><br>
-
-                <p>Analysed NI census data using Alteryx to find patterns and produce visuals for our argument. 
-                  Our team's solution involved introducing a government subsidised solar panel scheme to reduce the burden of energy payments
-                  on residents in more economically deprived areas. We presented our idea to a panel of judges and made it to the second round
-                  of the competition but unfortunately we did not make it to the final round.</p>
-              </div>
-            </div>
-            
+    <!-- ABOUT ME ------------------------------------------------------------
+         • Replace the photo: swap the src on <img class="about-photo"> with the
+           path to your image (e.g. src="me.jpg") or a data URI.
+         • Edit the paragraphs below with your own words.
+         • Skills: each .skill has data-level="0..3" — that number sets how many of
+           the three dots are filled (e.g. 2 = 2/3). Add/remove .skill rows freely. -->
+    <div class="about-card">
+      <div class="about-top">
+        <img class="about-photo" alt="Profile picture"
+             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 190'%3E%3Crect width='190' height='190' fill='%23241408'/%3E%3Ccircle cx='95' cy='74' r='33' fill='%236B4226'/%3E%3Cpath d='M42 172 C42 120 148 120 148 172 Z' fill='%236B4226'/%3E%3Ctext x='95' y='150' fill='%23F4C77A' font-family='sans-serif' font-size='11' text-anchor='middle' opacity='0.75'%3EAdd your photo%3C/text%3E%3C/svg%3E">
+        <div class="about-bio">
+          <span class="eyebrow">Beneath the surface</span>
+          <h2>About Me</h2>
+          <p>I'm a data and software developer who enjoys the full arc of a problem — digging into
+            messy data, shaping it into something clear, and building the tools that put it to work.</p>
+          <p>My background spans data analysis, statistics, and full-stack development, and I like
+            projects where those overlap. Recently I've been exploring quantum computing and
+            algorithms, always with an eye on the maths underneath.</p>
+          <p>Outside of the code, I'm happiest learning something new and finding the neatest way to
+            explain it. Feel free to reach out.</p>
+          <div class="contact-row">
+            <a href="mailto:hello@example.com">Email</a>
+            <a href="https://jlumber7.github.io/" target="_blank" rel="noopener">Website</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
           </div>
         </div>
-    </section>
+      </div>
 
-    <section id="spotify">
-        <div class="container">
-            <div class="box wide" style="justify-content: center;">
-              <div class="box-text">
-                <div class="glow"><p style="font-size: 1.1rem;"><strong>Test</strong></p></div><br>
-                <p>Test</p>
-              </div>
-            </div>
+      <div class="skills-block">
+        <h3>Technologies &amp; Languages</h3>
+        <div class="skills-grid">
+          <div class="skill" data-level="3"><span class="skill-name">Python</span></div>
+          <div class="skill" data-level="3"><span class="skill-name">SQL</span></div>
+          <div class="skill" data-level="3"><span class="skill-name">Pandas / NumPy</span></div>
+          <div class="skill" data-level="2"><span class="skill-name">JavaScript</span></div>
+          <div class="skill" data-level="2"><span class="skill-name">Java</span></div>
+          <div class="skill" data-level="2"><span class="skill-name">HTML &amp; CSS</span></div>
+          <div class="skill" data-level="2"><span class="skill-name">Alteryx</span></div>
+          <div class="skill" data-level="2"><span class="skill-name">Git</span></div>
+          <div class="skill" data-level="1"><span class="skill-name">C</span></div>
         </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>Have any queries? Get in touch with me today.</p>
-            <div class="contact-details">           
-              <p><strong>LinkedIn: </strong><a color="4b006e" href=https://uk.linkedin.com/in/james-lumber-aabbb329b>View Profile</a></p>
-              <p><strong>GitHub: </strong><a color="4b006e" href=https://github.com/jlumber7>View Profile</a></p>
-              <p><strong>Email: </strong><a color="4b006e" href="mailto:jameslumber777@gmail.com">jameslumber777@gmail.com</a></p>
-              <p><strong>Phone: </strong><a color="4b006e" href="tel:+447511611098">+44 07511 611098</a></p>
-            </div>
+      </div>
+    </div>
+    <!-- SPOTIFY LISTENING STATS ---------------------------------------------
+         Placeholder values — replace the artist / track / genre / minutes below
+         with your own. The two thumbnails are gradient placeholders; set a real
+         cover with e.g. style="background-image:url('cover.jpg');background-size:cover".
+         (For live figures you'd wire this up to the Spotify Web API.) -->
+    <div class="spotify-card">
+      <div class="spotify-head">
+        <div>
+          <span class="eyebrow">On rotation</span>
+          <h2>Listening Stats</h2>
         </div>
-    </section>
+        <div class="spotify-meta">
+          <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="spotify-range">Spotify · last 4 weeks</span>
+        </div>
+      </div>
+      <div class="spotify-stats">
+        <div class="stat-tile">
+          <span class="stat-label">Top Artist</span>
+          <div class="stat-main">
+            <span class="stat-thumb"></span>
+            <span class="stat-value">Artist Name</span>
+          </div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Top Track</span>
+          <div class="stat-main">
+            <span class="stat-thumb square"></span>
+            <span class="stat-value">Track Title<small>Artist Name</small></span>
+          </div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Top Genre</span>
+          <span class="stat-value">Indie Rock</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Minutes / month</span>
+          <span class="stat-value big">4,820</span>
+        </div>
+      </div>
+    </div>
+    <footer>© 2026 Your Name — grown, not templated.</footer>
+  </section>
 
-    <script src="homeScreenJS.js"></script>
-    <script src="carouselJS.js"></script>
+</div>
+
+<script src="script.js" defer></script>
+
 </body>
 </html>
