@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-22T20:29:26+00:00",
+  "time_range": "short_term",
+  "period_label": "last 4 weeks",
+  "top_artist": {
+    "name": "Red Hot Chili Peppers",
+    "image": "https://i.scdn.co/image/ab67616100005174c33cc15260b767ddec982ce8",
+    "url": "https://open.spotify.com/artist/0L8ExT028jH3ddEcZwqJJ5",
+    "genres": []
+  },
+  "top_album": {
+    "name": "Californication (2014 Remaster)",
+    "artist": "Red Hot Chili Peppers",
+    "image": "https://i.scdn.co/image/ab67616d00001e028c454553437148983891dd6d",
+    "url": "https://open.spotify.com/album/6gK1K8nSgypIvAihhoXccQ",
+    "track_count": 5
+  },
+  "top_track": {
+    "name": "Sick Love",
+    "artist": "Red Hot Chili Peppers",
+    "image": "https://i.scdn.co/image/ab67616d00001e0258406b3f1ac3ceaff7a64fef",
+    "url": "https://open.spotify.com/track/6GsP3uMCd0Dn5T37C93waZ"
+  }
+}

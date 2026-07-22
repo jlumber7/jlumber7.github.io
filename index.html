@@ -288,7 +288,7 @@
     <div class="spotify-card">
       <div class="spotify-head">
         <div>
-          <h2>Recent Listening</h2>
+          <h2>Recent Listening on Spotify - <a href="https://open.spotify.com/user/zppa1cdrufh6r4ox1pdujg6nm?si=dc131a1fb7924ece">jlumber7</a></h2>
         </div>
         <div class="spotify-meta">
           <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
@@ -299,24 +299,27 @@
         <div class="stat-tile">
           <span class="stat-label">Top Artist</span>
           <div class="stat-main">
-            <span class="stat-thumb"></span>
-            <span class="stat-value">Artist Name</span>
+            <span class="stat-thumb" data-spotify-img="top_artist.image"></span>
+            <span class="stat-value" data-spotify="top_artist.name">Artist Name</span>
           </div>
         </div>
         <div class="stat-tile">
           <span class="stat-label">Top Album</span>
           <div class="stat-main">
-            <span class="stat-thumb square"></span>
-            <span class="stat-value">Album Name<small>Artist Name</small></span>
+            <span class="stat-thumb square" data-spotify-img="top_album.image"></span>
+            <span class="stat-value" data-spotify="top_album.name">Album Name<small data-spotify="top_album.artist">Artist Name</small></span>
           </div>
         </div>
         <div class="stat-tile">
           <span class="stat-label">Top Song</span>
-          <span class="stat-value">Song Name<small>Artist Name</small></span>
+          <div class="stat-main">
+            <span class="stat-thumb square" data-spotify-img="top_track.image"></span>
+            <span class="stat-value" data-spotify="top_track.name">Song Name<small data-spotify="top_track.artist">Artist Name</small></span>
+          </div>
         </div>
         <div class="stat-tile">
           <span class="stat-label">Minutes / month</span>
-          <span class="stat-value big">0</span>
+          <span class="stat-value big" data-spotify="minutes_listened">0</span>
         </div>
       </div>
     </div>

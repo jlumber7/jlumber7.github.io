@@ -626,4 +626,56 @@
 
     render();
   })();
+ 
+  // ---------- spotify stats: updates stats on page from json ----------
+  var SOURCE = "spotSection/spotDetails.json";
+ 
+  // "top_artist.name" -> value, tolerating missing branches
+  function pick(obj, path) {
+    return path.split(".").reduce(function (acc, key) {
+      return acc == null ? null : acc[key];
+    }, obj);
+  }
+ 
+  function apply(stats) {
+    document.querySelectorAll("[data-spotify]").forEach(function (el) {
+      var value = pick(stats, el.getAttribute("data-spotify"));
+      if (value) el.textContent = value;
+    });
+ 
+    document.querySelectorAll("[data-spotify-img]").forEach(function (el) {
+      var url = pick(stats, el.getAttribute("data-spotify-img"));
+      if (!url) return;
+      el.style.backgroundImage = "url('" + url + "')";
+      el.style.backgroundSize = "cover";
+      el.style.backgroundPosition = "center";
+    });
+ 
+    // wrap items in their Spotify links, where the markup asks for it
+    document.querySelectorAll("[data-spotify-url]").forEach(function (el) {
+      var url = pick(stats, el.getAttribute("data-spotify-url"));
+      if (url) {
+        el.setAttribute("href", url);
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener");
+      }
+    });
+ 
+    if (stats.period_label) {
+      document.querySelectorAll("[data-spotify-period]").forEach(function (el) {
+        el.textContent = "Spotify \u00b7 " + stats.period_label;
+      });
+    }
+  }
+ 
+  fetch(SOURCE, { cache: "no-cache" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(apply)
+    .catch(function (err) {
+      // leave the placeholder content in place - just note why it didn't update
+      console.warn("Spotify stats unavailable:", err.message);
+    });
 })();
