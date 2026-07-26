@@ -186,6 +186,7 @@ def build_stats(token):
         "top_artist": None,
         "top_album": None,
         "top_track": None,
+        "minutes_listened": 0,
     }
 
     if artists:
