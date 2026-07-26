@@ -363,6 +363,18 @@ section{ min-height:100vh; position:relative; }
 .stat-value a{ color:var(--root-glow); text-decoration:none; }
 .stat-value a:hover{ color:#fff; }
 
+.letterboxd-stats{ display:grid; grid-template-columns:3fr 1fr; gap:1.1rem 1.6rem; padding-top:1.2rem; }
+.letterboxd-stats .stat-tile:last-child{ justify-self:end; text-align:right; }
+
+.movie-grid{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:0.9rem; align-items:start; }
+.movie{ display:flex; flex-direction:column; gap:0.45rem; min-width:0; }
+
+.stat-sublink{
+  font-size:0.8rem; color:var(--root-glow); text-decoration:none;
+  border-bottom:1px solid rgba(244,199,122,0.4); padding-bottom:1px;
+}
+.stat-sublink:hover{ color:#fff; border-color:#fff; }
+
 @media (max-width:640px){
   .media-head{ flex-direction:column; align-items:flex-start; }
 }
@@ -392,4 +404,5 @@ footer{ text-align:center; padding:3rem 0 4rem; color:var(--paper); opacity:0.45
   /* the flower now sits larger and lower (centre ~30% down, bottom ~48%), so
      anchor the title just beneath it instead of pinning it to the page bottom */
   .hero{ justify-content:flex-start; padding-top:54vh; padding-bottom:0; }
+  .movie-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
 }
