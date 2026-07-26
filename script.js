@@ -20,7 +20,7 @@
   const rootStruct  = document.getElementById('rootStruct');
   const rootCards   = document.getElementById('rootCards');
   const aboutCard   = document.querySelector('.about-card');
-  const spotifyCard = document.querySelector('.spotify-card');
+  const mediaCard = document.querySelector('.media-card');
   // absolute document position/size of an element (unaffected by current scroll)
   function docPos(el){
     const r = el.getBoundingClientRect();
@@ -459,12 +459,12 @@
   }
   function drawStructureRoots(){
     const stemBase = document.getElementById('stem-base-tip');
-    if (!stemBase || !aboutCard || !spotifyCard) return;
+    if (!stemBase || !aboutCard || !mediaCard) return;
     ensureStructNodes();
     const b = docPos(stemBase);
     const cx = b.cx, cy = b.cy;
     const a = docPos(aboutCard);
-    const s = docPos(spotifyCard);
+    const s = docPos(mediaCard);
     const paths = rootStruct.querySelectorAll('path');
 
     // 1) stem base → top-centre of the About Me card, gently weaving as it descends
@@ -691,6 +691,14 @@
         el.setAttribute("target", "_blank");
         el.setAttribute("rel", "noopener");
       }
+    });
+
+    document.querySelectorAll("[data-letterboxd-img]").forEach(function (el) {
+      var url = pick(stats, el.getAttribute("data-letterboxd-img"));
+      if (!url) return;
+      el.style.backgroundImage = "url('" + url + "')";
+      el.style.backgroundSize = "cover";
+      el.style.backgroundPosition = "center";
     });
  
     if (stats.period_label) {
