@@ -358,6 +358,8 @@ section{ min-height:100vh; position:relative; }
 .stat-value{ font-family:var(--display); font-size:1rem; line-height:1.2; }
 .stat-value small{ display:block; font-family:var(--body); font-size:0.72rem; opacity:0.6; margin-top:2px; }
 .stat-value.big{ font-size:1.55rem; }
+.stat-value a{ color:var(--root-glow); text-decoration:none; }
+.stat-value a:hover{ color:#fff; }
 
 @media (max-width:640px){
   .spotify-head{ flex-direction:column; align-items:flex-start; }
