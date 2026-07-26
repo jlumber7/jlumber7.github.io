@@ -84,15 +84,29 @@
     // Anchor the flower a FIXED distance from the top edge. The petals extend 210
     // units above the centre and shapes are drawn at a fixed size, so a proportional
     // (SEC-based) offset would drop below 210 on wide/fullscreen viewports and clip
-    // the top petals. 270 keeps the whole flower head safely on screen everywhere.
-    flowerCy = 270;
+    // the top petals.
+    // The flower is drawn at a fixed unit size but the whole scene scales with
+    // width: on wide viewports the petals balloon, so the size is capped; on
+    // PHONES the same flower renders tiny and huddles at the very top, so below
+    // 720px it's scaled UP instead (to 1.6x on the narrowest screens) and its
+    // centre drops to ~30% of the viewport height, filling the hero properly.
+    if (W < 720){
+      flowerScale = Math.min(1.6, 720 / Math.max(1, W));
+      flowerCy = Math.max(
+        60 + 210 * flowerScale,                 // never clip the top petals
+        0.30 * window.innerHeight * 1000 / W    // sit ~30% down the first screen
+      );
+    } else {
+      flowerScale = Math.min(1, 1190 / Math.max(1, W));
+      flowerCy = 270;
+    }
     stemTop  = flowerCy + 40;      // stem emerges from just inside the flower disc
     flowerCx = stemX(stemTop);
-    // The flower is drawn at a fixed unit size but the whole scene scales with
-    // width, so on wide/fullscreen viewports the petals balloon (~400px each) and
-    // reach down over the hero name. Cap the flower's rendered size so its
-    // footprint stays sensible and clears the name. (scale = W/1000 px per unit.)
-    flowerScale = Math.min(1, 1190 / Math.max(1, W));
+
+    // stem thickness: 14 units reads right on desktop, but units shrink with the
+    // screen (1 unit = W/1000 px), so on phones 14 units is a ~5px thread —
+    // widen it there so the stem holds its visual weight (~10px)
+    document.getElementById('stemPath').setAttribute('stroke-width', W < 720 ? 26 : 14);
 
     document.getElementById('stemPath').setAttribute('d', buildStemPath(stemTop, baseY + 20));
     buildFlower();
@@ -373,8 +387,15 @@
       // reveal the project card when its (now-open) leaf is around the middle of
       // the screen — biased slightly low so the card appears earlier — while still
       // showing one card at a time even though every visible leaf is unfurling
-      const nearCenter = Math.abs(baseScreenY - H*0.46) < H*0.26;
-      sec.classList.toggle('active', nearCenter && p > 0.45);
+      // hysteresis: a wider band to switch OFF than ON, so slow scrolling (and
+      // mobile URL-bar height changes) hovering near the boundary can't rapidly
+      // re-trigger the fade transition — the source of the glitchy flicker
+      const dist = Math.abs(baseScreenY - H*0.46);
+      const wasActive = sec.classList.contains('active');
+      const activeNow = wasActive
+        ? (dist < H*0.34 && p > 0.30)   // once shown, keep until clearly out
+        : (dist < H*0.26 && p > 0.45);  // stricter test to appear
+      sec.classList.toggle('active', activeNow);
 
       // place the card directly above the leaf's live tip, so it rises with the leaf
       const tipRect = leaf.tip.getBoundingClientRect();
@@ -480,13 +501,24 @@
   // every intermediate frame. The rebuild itself is synchronous, so there's no
   // visible flash.
   let needsRebuild = false, rebuildTimer = null;
-  function requestRebuild(delay){
+  let lastRebuildW = window.innerWidth;
+  const coarseTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  function requestRebuild(delay, force){
     clearTimeout(rebuildTimer);
-    rebuildTimer = setTimeout(()=>{ needsRebuild = true; }, delay == null ? 180 : delay);
+    rebuildTimer = setTimeout(()=>{
+      // On phones the URL bar sliding in/out fires resizes where only the HEIGHT
+      // changes; rebuilding then makes the whole plant visibly jump mid-scroll.
+      // Width is what the artwork actually scales by, so height-only changes are
+      // ignored on touch devices (orientation/fullscreen pass force=true).
+      const w = window.innerWidth;
+      if (!force && coarseTouch && w === lastRebuildW) return;
+      lastRebuildW = w;
+      needsRebuild = true;
+    }, delay == null ? 180 : delay);
   }
   window.addEventListener('resize', ()=> requestRebuild());
-  window.addEventListener('orientationchange', ()=> requestRebuild(120));
-  document.addEventListener('fullscreenchange', ()=> requestRebuild(120));
+  window.addEventListener('orientationchange', ()=> requestRebuild(120, true));
+  document.addEventListener('fullscreenchange', ()=> requestRebuild(120, true));
   if (window.ResizeObserver){
     let firstRO = true;
     new ResizeObserver(()=>{ if (firstRO){ firstRO = false; return; } requestRebuild(); })
