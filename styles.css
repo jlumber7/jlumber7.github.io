@@ -291,6 +291,45 @@ section{ min-height:100vh; position:relative; }
 .about-bio p{ font-size:0.92rem; line-height:1.65; opacity:0.9; margin:0 0 0.9rem; }
 .about-bio p:last-child{ margin-bottom:0; }
 
+/* --- tooltips (about bio) --- */
+.tooltip{
+  position:relative;                       /* anchor for the bubble */
+  cursor:help;
+  border-bottom:1px dotted var(--glow-yellow);  /* hints "hover me" */
+}
+.tooltip .tooltip-text{
+  position:absolute;
+  bottom:calc(100% + 10px);                /* sit above the trigger */
+  left:50%;
+  transform:translateX(-50%) translateY(4px);
+  width:max-content;
+  max-width:min(260px, 80vw);              /* long subject lists wrap; never wider than a phone */
+  padding:0.55rem 0.8rem;
+  background:linear-gradient(160deg, rgba(62,42,26,0.97), rgba(36,20,8,0.98));
+  border:1px solid var(--glow-yellow);
+  border-radius:6px;
+  color:var(--paper);
+  font-size:0.78rem;
+  font-weight:400;                         /* your triggers sit inside <strong> — don't inherit bold */
+  line-height:1.45;
+  text-align:center;
+  opacity:0; visibility:hidden;
+  transition:opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  pointer-events:none;
+  z-index:10;
+  box-shadow:0 0 18px rgba(255,216,102,0.25), 0 8px 20px rgba(0,0,0,0.4);
+}
+/* little arrow pointing at the trigger */
+.tooltip .tooltip-text::after{
+  content:""; position:absolute; top:100%; left:50%; margin-left:-5px;
+  border:5px solid transparent; border-top-color:var(--glow-yellow);
+}
+.tooltip:hover .tooltip-text,
+.tooltip:focus-within .tooltip-text{
+  opacity:1; visibility:visible;
+  transform:translateX(-50%) translateY(0);
+}
+
 .skills-block{ margin-top:2rem; padding-top:1.6rem; border-top:1px solid rgba(255,216,102,0.18); }
 .skills-block h3{
   font-family:var(--body); text-transform:uppercase; letter-spacing:0.14em;
@@ -405,4 +444,5 @@ footer{ text-align:center; padding:3rem 0 4rem; color:var(--paper); opacity:0.45
      anchor the title just beneath it instead of pinning it to the page bottom */
   .hero{ justify-content:flex-start; padding-top:54vh; padding-bottom:0; }
   .movie-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .tooltip .tooltip-text{ left:0; transform:translateY(4px); } .tooltip:hover .tooltip-text, .tooltip:focus-within .tooltip-text{ transform:translateY(0); } .tooltip .tooltip-text::after{ left:1rem; }
 }
