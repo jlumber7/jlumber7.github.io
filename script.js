@@ -692,14 +692,6 @@
         el.setAttribute("rel", "noopener");
       }
     });
-
-    document.querySelectorAll("[data-letterboxd-img]").forEach(function (el) {
-      var url = pick(stats, el.getAttribute("data-letterboxd-img"));
-      if (!url) return;
-      el.style.backgroundImage = "url('" + url + "')";
-      el.style.backgroundSize = "cover";
-      el.style.backgroundPosition = "center";
-    });
  
     if (stats.period_label) {
       document.querySelectorAll("[data-spotify-period]").forEach(function (el) {
