@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T11:03:35+00:00",
+  "generated_at": "2026-07-26T16:03:41+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -21,5 +21,9 @@
     "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
     "url": "https://open.spotify.com/track/3gvyksxkLbyKwi0WjCiPXE"
   },
-  "minutes_listened": 216
+  "spot_profile": {
+    "name": "JamesL7",
+    "image": "https://i.scdn.co/image/ab6775700000ee8579a40d9a150221564031ad69",
+    "url": "https://open.spotify.com/user/zppa1cdrufh6r4ox1pdujg6nm"
+  }
 }

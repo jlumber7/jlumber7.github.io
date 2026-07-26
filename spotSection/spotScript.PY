@@ -170,14 +170,37 @@ def top_album_from_tracks(tracks, include_singles=False):
     }
 
 
+def get_profile(token):
+    """GET /me - my account's public profile (display name, avatar, link)."""
+    resp = _request(
+        "GET", f"{API}/me",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    if resp.status_code != 200:
+        sys.exit(f"Error fetching profile ({resp.status_code}): {resp.text}")
+
+    data = resp.json()
+    return {
+        "name": data.get("display_name"),
+        "image": _image(data.get("images", [])),   # picks the size closest to 300px
+        "url": (data.get("external_urls") or {}).get("spotify"),
+    }
+
+
 def build_stats(token):
     print("Fetching top artists...")
     artists = get_top_items(token, "artists", limit=20)
     print("Fetching top tracks...")
     tracks = get_top_items(token, "tracks", limit=50)
+    print("Fetching profile...")
+    profile = get_profile(token)
 
     if not artists and not tracks:
         sys.exit("Spotify returned no listening data for this period.")
+
+    if not profile:
+        sys.exit("Spotify returned no profile data for this account.")
 
     stats = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -186,7 +209,7 @@ def build_stats(token):
         "top_artist": None,
         "top_album": None,
         "top_track": None,
-        "minutes_listened": 0,
+        "spot_profile": None,
     }
 
     if artists:
@@ -209,6 +232,9 @@ def build_stats(token):
             "url": (t.get("external_urls") or {}).get("spotify"),
         }
         stats["top_album"] = top_album_from_tracks(tracks)
+
+    if profile:
+        stats["spot_profile"] = profile
 
     return stats
 
