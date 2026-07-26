@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T20:29:26+00:00",
+  "generated_at": "2026-07-26T11:03:35+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -9,16 +9,17 @@
     "genres": []
   },
   "top_album": {
-    "name": "Californication (2014 Remaster)",
+    "name": "Stadium Arcadium",
     "artist": "Red Hot Chili Peppers",
-    "image": "https://i.scdn.co/image/ab67616d00001e028c454553437148983891dd6d",
-    "url": "https://open.spotify.com/album/6gK1K8nSgypIvAihhoXccQ",
-    "track_count": 5
+    "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
+    "url": "https://open.spotify.com/album/7xl50xr9NDkd3i2kBbzsNZ",
+    "track_count": 7
   },
   "top_track": {
-    "name": "Sick Love",
+    "name": "She's Only 18",
     "artist": "Red Hot Chili Peppers",
-    "image": "https://i.scdn.co/image/ab67616d00001e0258406b3f1ac3ceaff7a64fef",
-    "url": "https://open.spotify.com/track/6GsP3uMCd0Dn5T37C93waZ"
-  }
+    "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
+    "url": "https://open.spotify.com/track/3gvyksxkLbyKwi0WjCiPXE"
+  },
+  "minutes_listened": 216
 }

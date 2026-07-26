@@ -184,7 +184,7 @@ section{ min-height:100vh; position:relative; }
 /* roots / about section */
 .roots-section{
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-  padding-top:16vh; gap:0;
+  padding-top:16vh; gap:0; padding-bottom:12vh;
 }
 
 .stories-heading{ text-align:center; margin:0 0 1.8rem; }
