@@ -283,8 +283,7 @@
     <!-- SPOTIFY LISTENING STATS ---------------------------------------------
          Placeholder values — replace the artist / track / genre / minutes below
          with your own. The two thumbnails are gradient placeholders; set a real
-         cover with e.g. style="background-image:url('cover.jpg');background-size:cover".
-         (For live figures you'd wire this up to the Spotify Web API.) -->
+         cover with e.g. style="background-image:url('cover.jpg');background-size:cover". -->
     <div class="spotify-card">
       <div class="spotify-head">
         <div>
@@ -307,19 +306,22 @@
           <span class="stat-label">Top Album</span>
           <div class="stat-main">
             <span class="stat-thumb square" data-spotify-img="top_album.image"></span>
-            <span class="stat-value" data-spotify="top_album.name">Album Name</span><small data-spotify="top_album.artist">Artist Name</small>
+            <span class="stat-value"><span data-spotify="top_album.name">Album Name</span><small data-spotify="top_album.artist">Artist Name</small></span>
           </div>
         </div>
         <div class="stat-tile">
           <span class="stat-label">Top Song</span>
           <div class="stat-main">
             <span class="stat-thumb square" data-spotify-img="top_track.image"></span>
-            <span class="stat-value" data-spotify="top_track.name">Song Name</span><small data-spotify="top_track.artist">Artist Name</small>
+            <span class="stat-value"><span data-spotify="top_track.name">Song Name</span><small data-spotify="top_track.artist">Artist Name</small></span>
           </div>
         </div>
         <div class="stat-tile">
-          <span class="stat-label">Minutes / month</span>
-          <span class="stat-value big" data-spotify="minutes_listened">0</span>
+          <span class="stat-label">My Spotify Profile</span>
+          <div class="stat-main">
+            <span class="stat-thumb"><a data-spotify-url="spot_profile.url" data-spotify-img="spot_profile.image"></a></span>
+            <span class="stat-value"><a data-spotify-url="spot_profile.url" data-spotify="spot_profile.name">jlumber7</a></span>
+          </div>
         </div>
       </div>
     </div>
