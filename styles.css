@@ -408,6 +408,9 @@ section{ min-height:100vh; position:relative; }
 .movie-grid{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:0.9rem; align-items:start; }
 .movie{ display:flex; flex-direction:column; gap:0.45rem; min-width:0; }
 
+.reading-stats{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:1.1rem 1.6rem; padding-top:1.2rem; }
+.reading-stats .stat-tile:last-child{ justify-self:end; text-align:right; }
+
 .stat-sublink{
   font-size:0.8rem; color:var(--root-glow); text-decoration:none;
   border-bottom:1px solid rgba(244,199,122,0.4); padding-bottom:1px;
