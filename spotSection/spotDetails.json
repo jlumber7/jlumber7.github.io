@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T16:03:41+00:00",
+  "generated_at": "2026-08-02T14:03:47+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -13,13 +13,13 @@
     "artist": "Red Hot Chili Peppers",
     "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
     "url": "https://open.spotify.com/album/7xl50xr9NDkd3i2kBbzsNZ",
-    "track_count": 7
+    "track_count": 6
   },
   "top_track": {
-    "name": "She's Only 18",
-    "artist": "Red Hot Chili Peppers",
-    "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
-    "url": "https://open.spotify.com/track/3gvyksxkLbyKwi0WjCiPXE"
+    "name": "Brandy & Coke - Trampled Under Foot; Initial / Rough Mix",
+    "artist": "Led Zeppelin",
+    "image": "https://i.scdn.co/image/ab67616d00001e02765b0617b572bdd1dbdc7d8e",
+    "url": "https://open.spotify.com/track/1PELiBvwMisTq8ERS5OhlD"
   },
   "spot_profile": {
     "name": "JamesL7",
