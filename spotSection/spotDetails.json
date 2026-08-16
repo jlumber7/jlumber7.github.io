@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-08-02T14:03:47+00:00",
+  "generated_at": "2026-08-16T13:47:58+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
-    "name": "Red Hot Chili Peppers",
-    "image": "https://i.scdn.co/image/ab67616100005174c33cc15260b767ddec982ce8",
-    "url": "https://open.spotify.com/artist/0L8ExT028jH3ddEcZwqJJ5",
+    "name": "Led Zeppelin",
+    "image": "https://i.scdn.co/image/b0248a44865493e6a03832aa89854ada16ff07a8",
+    "url": "https://open.spotify.com/artist/36QJpDe2go2KgaRleHCDTp",
     "genres": []
   },
   "top_album": {
-    "name": "Stadium Arcadium",
-    "artist": "Red Hot Chili Peppers",
-    "image": "https://i.scdn.co/image/ab67616d00001e0209fd83d32aee93dceba78517",
-    "url": "https://open.spotify.com/album/7xl50xr9NDkd3i2kBbzsNZ",
+    "name": "Physical Graffiti (Deluxe Edition)",
+    "artist": "Led Zeppelin",
+    "image": "https://i.scdn.co/image/ab67616d00001e02765b0617b572bdd1dbdc7d8e",
+    "url": "https://open.spotify.com/album/26tH0kjUhkxBEd3ipGkx3Y",
     "track_count": 6
   },
   "top_track": {
-    "name": "Brandy & Coke - Trampled Under Foot; Initial / Rough Mix",
-    "artist": "Led Zeppelin",
-    "image": "https://i.scdn.co/image/ab67616d00001e02765b0617b572bdd1dbdc7d8e",
-    "url": "https://open.spotify.com/track/1PELiBvwMisTq8ERS5OhlD"
+    "name": "Romeo And Juliet",
+    "artist": "Dire Straits",
+    "image": "https://i.scdn.co/image/ab67616d00001e0289ac804ee51f66fe370c4577",
+    "url": "https://open.spotify.com/track/0PNt5WTw092eED0ru9SuIp"
   },
   "spot_profile": {
     "name": "JamesL7",
