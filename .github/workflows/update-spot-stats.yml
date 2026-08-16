@@ -1,0 +1,47 @@
+# Updates personal spotify stats weekly and commits them to the repo.
+# This workflow is triggered every Monday at 06.15 GMT
+# Can be triggered manually from the Actions tab in GitHub.
+
+name: Update Spotify Stats
+
+on: 
+    schedule:
+        - cron: '15 6 * * 1'
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    update-spot-stats:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.12'
+                cache: pip
+
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Fetch Listening Stats
+              env:
+                SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+                SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+                SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+              run: python spotSection/spotScript.py --out spotSection/spotDetails.json
+
+            - name: Commit if Changed
+              run: |
+                    git config --global user.name 'github-actions[bot]'
+                    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+                    if git diff --quiet -- spotSection/spotDetails.json; then
+                        echo "No changes this week."
+                    else
+                        git add spotSection/spotDetails.json
+                        git commit -m "chore: refresh spotify listening stats"
+                        git push
+                    fi
