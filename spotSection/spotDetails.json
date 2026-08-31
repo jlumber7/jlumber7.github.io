@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T07:29:44+00:00",
+  "generated_at": "2026-08-31T13:52:50+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -13,13 +13,13 @@
     "artist": "Led Zeppelin",
     "image": "https://i.scdn.co/image/ab67616d00001e02765b0617b572bdd1dbdc7d8e",
     "url": "https://open.spotify.com/album/26tH0kjUhkxBEd3ipGkx3Y",
-    "track_count": 7
+    "track_count": 8
   },
   "top_track": {
-    "name": "Stairway to Heaven - Remaster",
-    "artist": "Led Zeppelin",
-    "image": "https://i.scdn.co/image/ab67616d00001e02c8a11e48c91a982d086afc69",
-    "url": "https://open.spotify.com/track/5CQ30WqJwcep0pYcV4AMNc"
+    "name": "Civil War",
+    "artist": "Guns N' Roses",
+    "image": "https://i.scdn.co/image/ab67616d00001e0292d21aef6c0d288cc4c05973",
+    "url": "https://open.spotify.com/track/6i4Qi1mJxXjqNIL9HfJhRs"
   },
   "spot_profile": {
     "name": "JamesL7",
