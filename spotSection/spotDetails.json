@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T12:34:45+00:00",
+  "generated_at": "2026-09-14T12:49:46+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -9,11 +9,11 @@
     "genres": []
   },
   "top_album": {
-    "name": "Inflammable Material",
-    "artist": "Stiff Little Fingers",
-    "image": "https://i.scdn.co/image/ab67616d00001e02466cbdbfa0f61e469beca2a1",
-    "url": "https://open.spotify.com/album/2uXYm7SqdQlOgrx2FEWlkD",
-    "track_count": 3
+    "name": "Nevermind (30th Anniversary Super Deluxe)",
+    "artist": "Nirvana",
+    "image": "https://i.scdn.co/image/ab67616d00001e02444f118a9126af9e1483dcc0",
+    "url": "https://open.spotify.com/album/0ezJun7CKk7Hh70MPL0dcJ",
+    "track_count": 5
   },
   "top_track": {
     "name": "Civil War",
