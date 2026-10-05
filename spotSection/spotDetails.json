@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T13:57:12+00:00",
+  "generated_at": "2026-10-05T14:41:55+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -9,17 +9,17 @@
     "genres": []
   },
   "top_album": {
-    "name": "Nevermind (30th Anniversary Super Deluxe)",
-    "artist": "Nirvana",
-    "image": "https://i.scdn.co/image/ab67616d00001e02444f118a9126af9e1483dcc0",
-    "url": "https://open.spotify.com/album/0ezJun7CKk7Hh70MPL0dcJ",
-    "track_count": 5
+    "name": "Some Girls",
+    "artist": "The Rolling Stones",
+    "image": "https://i.scdn.co/image/ab67616d00001e0205c7aec05eabf142cc33b936",
+    "url": "https://open.spotify.com/album/1Jv2AqzhgsduUik2p4k3cS",
+    "track_count": 2
   },
   "top_track": {
-    "name": "No Quarter - Remaster",
+    "name": "Hey, Hey, What Can I Do - Remaster",
     "artist": "Led Zeppelin",
-    "image": "https://i.scdn.co/image/ab67616d00001e021aa47e71c4edfeaddb65cd54",
-    "url": "https://open.spotify.com/track/0GRBFjza23Im7Xb16c9AaK"
+    "image": "https://i.scdn.co/image/ab67616d00001e023b7bf70364c3f8643723398e",
+    "url": "https://open.spotify.com/track/16VhHtoaOjTU4AJBNSBNQ1"
   },
   "spot_profile": {
     "name": "JamesL7",
