@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T13:18:13+00:00",
+  "generated_at": "2026-10-26T13:05:08+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -9,17 +9,17 @@
     "genres": []
   },
   "top_album": {
-    "name": "Some Girls",
-    "artist": "The Rolling Stones",
-    "image": "https://i.scdn.co/image/ab67616d00001e0205c7aec05eabf142cc33b936",
-    "url": "https://open.spotify.com/album/1Jv2AqzhgsduUik2p4k3cS",
+    "name": "Second Helping (Expanded Edition)",
+    "artist": "Lynyrd Skynyrd",
+    "image": "https://i.scdn.co/image/ab67616d00001e0217e1907923e91181f38290ac",
+    "url": "https://open.spotify.com/album/54V1ljNtyzAm053oJqi0SH",
     "track_count": 2
   },
   "top_track": {
-    "name": "Last Train to London",
-    "artist": "Electric Light Orchestra",
-    "image": "https://i.scdn.co/image/ab67616d00001e0237e78b6638f7737adee73d6f",
-    "url": "https://open.spotify.com/track/6xE6ZWzK1YDDSYzqOCoQlz"
+    "name": "I Need You",
+    "artist": "Lynyrd Skynyrd",
+    "image": "https://i.scdn.co/image/ab67616d00001e0217e1907923e91181f38290ac",
+    "url": "https://open.spotify.com/track/2UQWW8rhNJo5tBt77LnbZH"
   },
   "spot_profile": {
     "name": "JamesL7",
