@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T15:48:55+00:00",
+  "generated_at": "2026-11-23T18:10:56+00:00",
   "time_range": "short_term",
   "period_label": "last 4 weeks",
   "top_artist": {
@@ -13,13 +13,13 @@
     "artist": "Lynyrd Skynyrd",
     "image": "https://i.scdn.co/image/ab67616d00001e0217e1907923e91181f38290ac",
     "url": "https://open.spotify.com/album/54V1ljNtyzAm053oJqi0SH",
-    "track_count": 4
+    "track_count": 3
   },
   "top_track": {
-    "name": "I Need You",
-    "artist": "Lynyrd Skynyrd",
-    "image": "https://i.scdn.co/image/ab67616d00001e0217e1907923e91181f38290ac",
-    "url": "https://open.spotify.com/track/2UQWW8rhNJo5tBt77LnbZH"
+    "name": "November Rain",
+    "artist": "Guns N' Roses",
+    "image": "https://i.scdn.co/image/ab67616d00001e02e44963b8bb127552ac761873",
+    "url": "https://open.spotify.com/track/3YRCqOhFifThpSRFJ1VWFM"
   },
   "spot_profile": {
     "name": "JamesL7",
